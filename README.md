@@ -1,35 +1,8 @@
-# vue_study
+# CourseSchedulingDemo
 
-## Project setup
+## 2019.7.14
 
-``` node
-npm install
-```
+- README还没想好要写什么
+- 登录界面 https://www.youtube.com/watch?v=mUdo6w87rh4&t=1289s
 
-### Compiles and hot-reloads for development
-
-``` node
-npm run serve
-```
-
-### Compiles and minifies for production
-
-``` node
-npm run build
-```
-
-### Run your tests
-
-``` node
-npm run test
-```
-
-### Lints and fixes files
-
-``` node
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 之后弄一下菜单的路由吧
