@@ -54,11 +54,9 @@
             </el-menu>
         </el-aside>
         <el-main>
-          <transition>
-            <keep-alive>
+
               <router-view></router-view>
-            </keep-alive>
-          </transition>
+
         </el-main>
       </el-container>
 
