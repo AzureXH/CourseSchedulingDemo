@@ -14,15 +14,35 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/home/course',
+          name: 'course',
+          component: () => import('./views/content/Course.vue')
+        },
+        {
+          path: '/home/teacher',
+          name: 'teacher',
+          component: () => import('./views/content/Teacher.vue')
+        },
+        {
+          path: '/home/classroom',
+          name: 'classroom',
+          component: () => import('./views/content/Classroom.vue')
+        },
+        {
+          path: '/home/scheduling',
+          name: 'scheduling',
+          component: () => import('./views/content/Scheduling.vue')
+        }
+      ]
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+      component: () => import('./views/About.vue')
+    },
+
   ]
 })

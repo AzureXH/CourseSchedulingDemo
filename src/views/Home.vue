@@ -4,7 +4,7 @@
     <el-container>
       
       <el-header>
-        <el-menu :default-active="1" class="nav" mode="horizontal" @select="handleSelect"
+        <el-menu :default-active="$route.path" class="nav" mode="horizontal" @select="handleSelect"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b">
@@ -29,31 +29,37 @@
               router="true"
               unique-opened="true">
 
-              <el-menu-item index="1">
+              <el-menu-item index="1" :route="{path:'/home/course'}">
                 <template slot="title">
                   <i class="el-icon-location"></i>
                   <span>课程大纲</span>
                 </template>
               </el-menu-item>
 
-              <el-menu-item index="2">
+              <el-menu-item index="2" :route="{path:'/home/teacher'}">
                 <i class="el-icon-menu"></i>
                 <span slot="title">教师安排</span>
               </el-menu-item>
 
-              <el-menu-item index="3">
+              <el-menu-item index="3" :route="{path:'/home/classroom'}">
                 <i class="el-icon-document"></i>
                 <span slot="title">教室管理</span>
               </el-menu-item>
 
-              <el-menu-item index="4">
+              <el-menu-item index="4" :route="{path:'/home/scheduling'}">
                 <i class="el-icon-setting"></i>
                 <span slot="title">排课管理</span>
               </el-menu-item>
 
             </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <transition>
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
+          </transition>
+        </el-main>
       </el-container>
 
     </el-container>
