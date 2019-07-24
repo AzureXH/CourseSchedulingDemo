@@ -1,30 +1,43 @@
 # 排课系统设计报告
 
-<!-- - 本报告由markdown语法写成，为了获得更好的阅读体验，请打开[github链接](https://github.com/AzureXH/CourseSchedulingDemo) -->
+<!-- - 本报告由markdown语法写成，为了获得更好的阅读体验，请点击[github链接](https://github.com/AzureXH/CourseSchedulingDemo) -->
 
 ## 目录
 
 <!-- TOC -->
 
-- [排课系统设计报告](#%e6%8e%92%e8%af%be%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1%e6%8a%a5%e5%91%8a)
-  - [目录](#%e7%9b%ae%e5%bd%95)
-  - [设计背景](#%e8%ae%be%e8%ae%a1%e8%83%8c%e6%99%af)
-  - [技术栈](#%e6%8a%80%e6%9c%af%e6%a0%88)
-  - [主要](#%e4%b8%bb%e8%a6%81)
-    - [前端](#%e5%89%8d%e7%ab%af)
-    - [后端](#%e5%90%8e%e7%ab%af)
-  - [技术栈介绍](#%e6%8a%80%e6%9c%af%e6%a0%88%e4%bb%8b%e7%bb%8d)
-    - [vue](#vue)
-    - [vue-router](#vue-router)
-    - [element-ui](#element-ui)
-    - [axios](#axios)
-    - [Springboot](#springboot)
-    - [MongoDB](#mongodb)
-  - [使用这套技术栈的原因](#%e4%bd%bf%e7%94%a8%e8%bf%99%e5%a5%97%e6%8a%80%e6%9c%af%e6%a0%88%e7%9a%84%e5%8e%9f%e5%9b%a0)
-  - [开发工具](#%e5%bc%80%e5%8f%91%e5%b7%a5%e5%85%b7)
-  - [体系架构](#%e4%bd%93%e7%b3%bb%e6%9e%b6%e6%9e%84)
+- [排课系统设计报告](#排课系统设计报告)
+    - [目录](#目录)
+    - [文档修改历史](#文档修改历史)
+    - [设计背景](#设计背景)
+    - [技术栈](#技术栈)
+    - [主要](#主要)
+        - [前端](#前端)
+        - [后端](#后端)
+    - [技术栈介绍](#技术栈介绍)
+        - [vue](#vue)
+        - [vue-router](#vue-router)
+        - [element-ui](#element-ui)
+        - [axios](#axios)
+        - [Springboot](#springboot)
+        - [MongoDB](#mongodb)
+    - [使用这套技术栈的原因](#使用这套技术栈的原因)
+    - [开发工具](#开发工具)
+    - [开发流程](#开发流程)
+        - [模块设计](#模块设计)
+        - [体系结构设计](#体系结构设计)
+        - [功能设计](#功能设计)
+            - [Course模块](#course模块)
+            - [Classroom模块](#classroom模块)
+            - [Teacher模块](#teacher模块)
 
 <!-- /TOC -->
+
+## 文档修改历史
+
+| 修改日期  |               修改原因               | 版本号 |
+| :-------: | :----------------------------------: | :----: |
+| 2019.7.24 | 完成报告的初版，达到与代码设计的同步 |  v1.0  |
 
 ## 设计背景
 
@@ -109,7 +122,7 @@
 
     |        SQL         |      NoSQL       |
     | :----------------: | :--------------: |
-    |    数据表(Table    | 集合(Collection) |
+    |   数据表(Table)    | 集合(Collection) |
     | 记录(表中的某一行) |  文档(Document)  |
     | 字段(表中的某一列) |    域(Field)     |
 - 相比关系型数据库，NoSQL这类数据库存储数据更加的灵活
@@ -142,19 +155,80 @@
 - IntelliJ IDEA
   - 一个JAVA的IDE
 
-## 体系架构
+## 开发流程
 
+### 模块设计
+
+- 本项目的排课系统的主要模块主要分为四个
+  - 课程大纲
+  - 教师安排
+  - 教室管理
+  - 排课管理
+
+- 每个模块对应一个数据表，也就是文档
+  - course文档
+  - teacher文档
+  - classroom文档
+  - scheduling文档
+- 其中在初期开发中为了测试前后端接口以及数据库接口，增加了一个登录的小模块并且设置了一个user文档，但这个模块主要是为了测试接口，所以不是很重要。
+
+### 体系结构设计
+
+- 有了模块之后开始搭建项目的体系结构
 - 整个项目用的是分层的架构
+  - 分层架构优点：
+    - 在于只需要确定层与层之间的接口
+    - 各个层之间的代码互不干扰
+    - 负责某一层的程序员只需要写好自己那一层的代码就可以自行开发
+    - 如果出现其它层代码写的过慢的情况，由于接口和传输的数据格式都是定死的，只需要自己写假代码就可以确认自己的代码是否有bug，也就是Mocker
 - 客户端发出请求由最上层开始调用至最底层
 - 服务器响应请求由最底层返回给最上层
 - 前端
-  - vue框架下的展示层界面
+  - vue框架下的**展示层**界面
   - axios库发送请求给后端控制器层(Controller)
   - axios发送请求时所带的请求体称为VO(View Object)
+    - VO即为展示层的对象
 - 后端
-  - 控制器层(Controller)
-  - 业务逻辑层(BusinessLogic)
+  - **控制器层**(Controller)
+  - **业务逻辑层**(BusinessLogic)
     - 业务逻辑层接口(Service)
     - 业务逻辑的具体实现(ServiceImpl)
-  - 数据层(Data)
-- 结构图如图所示
+  - **数据层**(Data)
+  - 业务逻辑层和数据层之间传输的数据为PO(Persistent Object)
+    - PO称为持久化对象，存储于数据层中，对应的就是数据库中的表格
+- 体系结构图如图所示
+
+![体系结构](https://github.com/AzureXH/CourseSchedulingDemo/blob/master/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9B%BE.jpg?raw=true)
+
+### 功能设计
+
+- 整个项目的体系结构搭建好后，就可以开始设计具体功能了。
+- 由于分好了四个模块，我们只需要在各自的模块中设计功能。
+- 为了节省时间这里的功能设计我只写了每个模块的业务逻辑层的Service接口
+
+#### Course模块
+
+|   功能   |                 函数名称                 |                 网页请求说明                 | 数据库相关说明                       |
+| :------: | :--------------------------------------: | :------------------------------------------: | ------------------------------------ |
+| 增加课程 |  Boolean addCourse(CourseVO courseVO);   |             网页请求添加新的课程             | 在course集合中添加一个新的Course文档 |
+| 删除课程 | Boolean deleteCourse(CourseVO courseVO); |             网页请求删除某个课程             | 将course集合中对应的Course文档删除   |
+| 修改课程 | Boolean updateCourse(CourseVO courseVO); |             网页请求修改某个课程             | 将course集合中对应的Course文档修改   |
+| 获取课程 |      List<CourseVO> getAllCourse();      | 网页请求获取数据库中的所有课程，用于填充表格 | 返回course集合中全部的Course文档     |
+
+#### Classroom模块
+
+|   功能   |                     函数名称                      |                 网页请求说明                 | 数据库相关说明                             |
+| :------: | :-----------------------------------------------: | :------------------------------------------: | ------------------------------------------ |
+| 增加教室 |  Boolean addClassroom(ClassroomVO classroomVO);   |             网页请求添加新的教室             | 在classroom集合中添加一个新的Classroom文档 |
+| 删除教室 | Boolean deleteClassroom(ClassroomVO classroomVO); |             网页请求删除某个教室             | 将classroom集合中对应的Classroom文档删除   |
+| 修改教室 | Boolean updateClassroom(ClassroomVO classroomVO); |             网页请求修改某个教室             | 将classroom集合中对应的Classroom文档修改   |
+| 获取教室 |       List<ClassroomVO> getAllClassroom();        | 网页请求获取数据库中的所有教室，用于填充表格 | 返回classroom集合中全部的Classroom文档     |
+
+#### Teacher模块
+
+|   功能   |                  函数名称                   |                 网页请求说明                 | 数据库相关说明                         |
+| :------: | :-----------------------------------------: | :------------------------------------------: | -------------------------------------- |
+| 增加教师 |  Boolean addTeacher(TeacherVO teacherVO);   |             网页请求添加新的教师             | 在teacher集合中添加一个新的Teacher文档 |
+| 删除教师 | Boolean deleteTeacher(TeacherVO teacherVO); |             网页请求删除某个教师             | 将teacher集合中对应的Teacher文档删除   |
+| 修改教师 | Boolean updateTeacher(TeacherVO teacherVO); |             网页请求修改某个教师             | 将teacher集合中对应的Teacher文档修改   |
+| 获取教师 |      List<TeacherVO> getAllTeacher();       | 网页请求获取数据库中的所有教师，用于填充表格 | 返回teacher集合中全部的Teacher文档     |
