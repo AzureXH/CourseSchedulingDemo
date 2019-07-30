@@ -32,6 +32,21 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
+    public List<CourseVO> getFreeCourse(String teaching, String teacherDeaprtment) {
+        List<CourseVO> courseVOList = new ArrayList<CourseVO>();
+        List<Course> courseList = courseData.
+                findCoursesByTeacherDepartmentLike(teacherDeaprtment);
+        for (Course course:courseList
+        ) {
+            if (course.getTeaching().equals("")){
+                courseVOList.add(new CourseVO().p2v(course));
+            }
+        }
+        return courseVOList;
+
+    }
+
+    @Override
     public Boolean addCourse(CourseVO courseVO) {
         courseData.insert(new Course().v2p(courseVO));
         return true;

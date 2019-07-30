@@ -14,6 +14,8 @@ public interface ClassroomService {
 
     List<ClassroomVO> getAllClassroom();
 
+    List<ClassroomVO> getFreeClassroom(String teachingPattern);
+
     Boolean deleteClassroom(ClassroomVO classroomVO);
 
     Boolean updateClassroom(ClassroomVO classroomVO);

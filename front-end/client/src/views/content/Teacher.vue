@@ -49,7 +49,7 @@
 
         <el-button @click="dialogFormVisible = true" type="primary" icon="el-icon-plus">添加</el-button>
         
-        <el-dialog title="添加教师" :visible.sync="dialogFormVisible">
+        <el-dialog title="添加教师" :visible.sync="dialogFormVisible" width="30%">
 
           <el-form :model="form">
 
@@ -86,7 +86,7 @@
 
       </div>
 
-      <el-dialog title="修改教师" :visible.sync="editFormVisible" :before-close="clearForm">
+      <el-dialog title="修改教师" :visible.sync="editFormVisible" width="30%" :before-close="clearForm">
 
         <el-form :model="form">
 
@@ -152,9 +152,6 @@ export default {
     watch: {
     // 如果路由有变化，会再次执行该方法
       '$route': 'fetchData'
-    },
-    computed: {
-      
     },
     methods: {
       fetchData() {

@@ -27,10 +27,7 @@ public class Course {
      */
     private Integer credits;
 
-    /**
-     * 奇数学时是否要单双周上课 0：将有一次课上三个课时 1：单周上一次两个课时 2：双周上一次三个课时
-     */
-    private Integer extra;
+    private String teaching;
 
     public Course v2p(CourseVO courseVO){
         Course course = new Course();
@@ -40,7 +37,7 @@ public class Course {
         course.setName(courseVO.getName());
         course.setTerm(courseVO.getTerm());
         course.setCredits(courseVO.getCredits());
-        course.setExtra(courseVO.getExtra());
+        course.setTeaching(courseVO.getTeaching());
         return course;
     }
 
@@ -92,11 +89,11 @@ public class Course {
         this.credits = credits;
     }
 
-    public Integer getExtra() {
-        return extra;
+    public String getTeaching() {
+        return teaching;
     }
 
-    public void setExtra(Integer extra) {
-        this.extra = extra;
+    public void setTeaching(String teaching) {
+        this.teaching = teaching;
     }
 }

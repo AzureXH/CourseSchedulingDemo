@@ -14,6 +14,7 @@ public class Teacher {
     private String department;
     private String name;
     private String title;
+    private String teaching;
 
     public Teacher v2p(TeacherVO teacherVO){
         Teacher teacher = new Teacher();
@@ -55,5 +56,13 @@ public class Teacher {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTeaching() {
+        return teaching;
+    }
+
+    public void setTeaching(String teaching) {
+        this.teaching = teaching;
     }
 }

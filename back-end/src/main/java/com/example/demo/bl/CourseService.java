@@ -11,6 +11,8 @@ public interface CourseService {
 
     List<CourseVO> getAllCourse();
 
+    List<CourseVO> getFreeCourse(String teaching,String teacherDepartment);
+
     Boolean addCourse(CourseVO courseVO);
 
     Boolean deleteCourse(CourseVO courseVO);

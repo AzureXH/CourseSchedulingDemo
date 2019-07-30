@@ -62,7 +62,7 @@
 
         <el-button @click="dialogFormVisible = true;" type="primary" icon="el-icon-plus">添加</el-button>
         
-        <el-dialog title="添加课程" :visible.sync="dialogFormVisible">
+        <el-dialog title="添加课程" :visible.sync="dialogFormVisible" width="30%">
 
           <el-form :model="form">
 
@@ -130,7 +130,7 @@
       </div>
 
       <!-- :before-close里的方法不可以加括号 NB -->
-      <el-dialog title="修改课程" :visible.sync="editFormVisible" :before-close="clearForm">
+      <el-dialog title="修改课程" :visible.sync="editFormVisible" width="30%" :before-close="clearForm">
 
         <el-form :model="form">
 
@@ -144,7 +144,7 @@
             </el-select>
           </el-form-item>
 
-          <el-form-item label="教课院系" :label-width="formLabelWidth">
+          <el-form-item label="授课院系" :label-width="formLabelWidth">
             <el-select v-model="form.teacherDepartment" placeholder="请选择教授课程的老师所属的院系">
               <el-option label="工程管理学院" value="工程管理学院"></el-option>
               <el-option label="计算机科学与技术系" value="计算机科学与技术系"></el-option>

@@ -14,9 +14,12 @@
             主页
           </el-menu-item>
 
-          <el-menu-item index="2" :route="{path:'/about'}">
-            关于
-          </el-menu-item>
+          <a href="https://github.com/AzureXH/CourseSchedulingDemo">
+            <el-menu-item index="2" :route="{path:'/about'}">
+              关于
+            </el-menu-item>
+          </a>
+
         
         </el-menu>
       </el-header>

@@ -1,7 +1,12 @@
 <template>
   <div class="about">
-      <router-link to="/home">Home</router-link>  |
-      <router-link to="/about">About</router-link>
-    <h1>This is an about page</h1>
+    页面跳转中...无法跳转请点击 <a href="https://github.com/AzureXH/CourseSchedulingDemo">链接</a>
   </div>
 </template>
+
+<style scoped>
+.about{
+  padding: 30px;
+}
+</style>
+

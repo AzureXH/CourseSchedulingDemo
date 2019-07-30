@@ -21,6 +21,8 @@ public class Classroom {
 
     private Integer size_level;
 
+    private String teaching;
+
     public Classroom v2p(ClassroomVO classroomVO){
         Classroom classroom = new Classroom();
         classroom.setId(classroomVO.getId());
@@ -28,6 +30,7 @@ public class Classroom {
         classroom.setRoom(classroomVO.getRoom());
         classroom.setAvailable(classroomVO.getAvailable());
         classroom.setSize_level(classroomVO.getSize_level());
+        classroom.setTeaching(classroomVO.getTeaching());
         return classroom;
     }
 
@@ -69,5 +72,13 @@ public class Classroom {
 
     public void setSize_level(Integer size_level) {
         this.size_level = size_level;
+    }
+
+    public String getTeaching() {
+        return teaching;
+    }
+
+    public void setTeaching(String teaching) {
+        this.teaching = teaching;
     }
 }

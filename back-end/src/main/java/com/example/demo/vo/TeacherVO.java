@@ -10,6 +10,7 @@ public class TeacherVO {
     private String department;
     private String name;
     private String title;
+    private String teaching;
 
     public TeacherVO p2v(Teacher teacher){
         TeacherVO teacherVO = new TeacherVO();
@@ -50,5 +51,13 @@ public class TeacherVO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTeaching() {
+        return teaching;
+    }
+
+    public void setTeaching(String teaching) {
+        this.teaching = teaching;
     }
 }

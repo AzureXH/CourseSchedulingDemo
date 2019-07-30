@@ -57,7 +57,7 @@
 
       <el-button @click="dialogFormVisible = true" type="primary" icon="el-icon-plus">添加</el-button>
 
-      <el-dialog title="添加教室" :visible.sync="dialogFormVisible">
+      <el-dialog title="添加教室" :visible.sync="dialogFormVisible" width="30%">
 
         <el-form :model="form">
 
@@ -90,7 +90,7 @@
 
       </el-dialog>
 
-      <el-dialog title="修改教室" :visible.sync="editFormVisible" :before-close="clearForm">
+      <el-dialog title="修改教室" :visible.sync="editFormVisible" width="30%" :before-close="clearForm">
 
         <el-form :model="form">
 
@@ -174,7 +174,7 @@ export default {
     },
     methods: {
       fetchData() {
-        axios.get('/classroom/get')
+        axios.get('/classroom/get/all')
         .then(res => {
           this.tableData = res.data;
         })

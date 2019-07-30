@@ -13,6 +13,8 @@ public interface TeacherService {
 
     List<TeacherVO> getAllTeacher();
 
+    List<TeacherVO> getFreeTeacher(String teachingPattern, String department);
+
     Boolean addTeacher(TeacherVO teacherVO);
 
     Boolean deleteTeacher(TeacherVO teacherVO);
