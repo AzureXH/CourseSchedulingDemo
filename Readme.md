@@ -371,7 +371,7 @@ String time[] = {"0011","1100","1000","0001","001","000"}   //分别表示12节�
 
 5. forEach遍历CourseList,用一个元素course作为当前遍历的节点
 6. for遍历ClassroomList,用一个非临时变量记录当前遍历到的classroom，**跳出条件为当前时间段的空闲教室百分比morning或afternoon或night乘以教师数量**
-   1. 检测course的number_size是否等于ClassroomList[i].size_level并且当前教室是否可以被占用(注解)
+   1. 检测course的number_size是否等于ClassroomList[i].size_level并且当前教室是否可以被占用[(注解)](#检测当前教室是否可以被占用)
    2. 大于说明教室太小则将i--继续遍历
       1. 超出范围
    3. 小于说明教室太大则将i++继续遍历
