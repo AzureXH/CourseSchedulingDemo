@@ -309,7 +309,6 @@
 |       term        |  Int32   | 开课的学期(其实这个值是没有用的，因为排课只排当前学期的课程) |
 |      credits      |  Int32   | 这门课的学分，也就是每周课时                                 |
 |   need_credits    |  Int32   | 这门课为排课的每周课时                                       |
-
 |      number       |  Int32   | 课程上课人数                                                        |
 |   number_level    |  Int32   | 课程上课人数的等级(根据number的值自动计算，0-30为1，每30人+1)       |
 |     teaching      |  Array   | 这门课的上课时间，MongoDB可以用数组存储数据，并且可以存放String类型 |
